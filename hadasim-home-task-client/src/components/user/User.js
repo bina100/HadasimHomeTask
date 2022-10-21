@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { AiOutlinePlus } from 'react-icons/ai';
 
 const User = () => {
+    console.log("test pr");
     const location = useLocation();
     const { userData, parent } = location.state;
 
