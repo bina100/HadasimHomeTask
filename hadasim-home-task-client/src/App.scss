@@ -1,0 +1,13 @@
+@import './components/usersList/UsersList.scss';
+@import './components/user/User.scss';
+
+@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+.App {
+  // text-align: center;
+  direction: rtl;
+  font-family: 'Open Sans Hebrew';
+}
+.input-class{
+  display: flex;
+}
