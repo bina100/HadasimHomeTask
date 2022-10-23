@@ -1,8 +1,9 @@
-.user{
+.user {
     display: flex;
     height: 94vh;
     padding: 20px;
     background-color: #1e7b7e;
+
     .back-to-users-list {
         position: fixed;
         display: flex;
@@ -15,55 +16,56 @@
         width: 40px;
         right: 50px;
         align-items: center;
-        a{
+
+        a {
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        svg {
+            color: #fff;
         }
     }
-    .user-details{
+
+    .user-details {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         width: 40%;
         background-color: #fff;
         margin-left: 20px;
-
-        .input-class{
-            display: flex;
-            margin: 15px 10px;
-            label{
-                width: 100px;
-            }
-            input{
-                font-size: 22px;
-                width: 200px;
-                border-radius: 5px;
-                padding: 3px;
-            }
-        }
     }
-    .user-vaccin-details{
+
+    .user-vaccin-details {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         width: 58%;
         background-color: #fff;
-        table{
+
+        table {
             width: 90%;
             margin: 25px 30px;
             border-collapse: collapse;
-            .plus-row, .plus-col{
+
+            .plus-row,
+            .plus-col {
                 border: none;
             }
-            td,  th {
+
+            td,
+            th {
                 border: 1px solid #ddd;
                 padding: 8px;
-              }
-              
-            .add-row-btn{
-                background:none;
+            }
+
+            .add-row-btn {
+                background: none;
                 border: none;
-                
-                svg{
+
+                svg {
                     background-color: #1e7b7e;
                     color: #fff;
                     border-radius: 50%;
@@ -71,22 +73,44 @@
                     font-size: 22px;
                 }
             }
-            
+
+        }
+
+        h3 {
+            margin: 10px;
         }
     }
-    .btn{
-            border-radius: 5px;
-            padding: 5px 15px;
-            color: #fff;
-            margin-right: 30px;
-            background-color: #1e7b7e;
-            text-decoration: none;
+
+    .btn {
+        border-radius: 5px;
+        padding: 5px 15px;
+        color: #fff;
+        margin-right: 30px;
+        background-color: #1e7b7e;
+        text-decoration: none;
+        font-size: 22px;
+        border: none;
+
+        &:hover {
+            border: 1px solid #1e7b7e;
+            background-color: #fff;
+            color: #1e7b7e;
+        }
+    }
+
+    .input-class {
+        display: flex;
+        margin: 15px 10px;
+
+        label {
+            width: 100px;
+        }
+
+        input {
             font-size: 22px;
-            border: none;
-            &:hover {
-                border: 1px solid #1e7b7e;
-                background-color: #fff;
-                color: #1e7b7e;
-            }
+            width: 200px;
+            border-radius: 5px;
+            padding: 3px;
+        }
     }
 }
