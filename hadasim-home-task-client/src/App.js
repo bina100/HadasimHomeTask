@@ -6,15 +6,12 @@ import UsersList from './components/usersList/UsersList';
 import './App.scss';
 
 function App() {
-  console.log("test");
   return (
     <div className="App">
       <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<UsersList />}> */}
-          <Route index element={<UsersList />} />
+        <Route index element={<UsersList />} />
         <Route path="/user" element={<User />} />
-        {/* </Route> */}
       </Routes>
     </BrowserRouter>
       

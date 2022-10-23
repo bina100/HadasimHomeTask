@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { MdModeEdit } from 'react-icons/md';
 import { RiDeleteBin5Line, RiSwapLine } from 'react-icons/ri';
 import { AiOutlinePlus } from 'react-icons/ai';
-import User from '../user/User'
 import { Link } from 'react-router-dom'
 import Axios from 'axios';
-import SweetAlert from 'sweetalert';
+import SweetAlert from 'sweetalert2';
 
 const UsersList = () => {
     const [usersList, setUsersList] = useState([])
@@ -13,10 +12,6 @@ const UsersList = () => {
     useEffect(() => {
         getUserList();
     }, [])
-
-    useEffect(() => {
-        getUserList();
-    }, [usersList])
 
     //  function get users list data from database
     const getUserList = () => {
@@ -28,22 +23,33 @@ const UsersList = () => {
 
     //  function delete all users data from database
     const deleteUser = (id) => {
-        // (async ()=> {
-        // const response = await
+        //delete user data
         Axios.post('http://localhost:3001/deleteUser',
             { id: id },
         ).then(() => {
             console.log("success delete user")
-
+            getUserList();
         });
+        //delete user vaccine data
         Axios.post('http://localhost:3001/deleteDataVac',
             { id: id },
         ).then(() => {
             console.log("success delete users data vaccine")
-            SweetAlert({text:"הלקוח נמחק מהמערכת", timer:1500} );
         });
-        
-        // })();
+
+        //delete user status data
+        Axios.post('http://localhost:3001/deleteDataStatus',
+            { id: id },
+        ).then(() => {
+            console.log("success delete users status data ")
+            SweetAlert.fire({
+                icon: 'success',
+                text: "הלקוח נמחק מהמערכת",
+                timer: 1500,
+                showConfirmButton: false,
+            })
+        });
+
     }
 
     return (
@@ -64,12 +70,12 @@ const UsersList = () => {
                         <th></th>
                     </tr>
                     {usersList.map(user => (
-                       
-                            <tr key={user.Id} >
- <Link
-                            to={`/user`}
-                            state={{ userData: user, parent: 'showData' }}
-                        >
+
+                        <tr key={user.Id} >
+                            <Link
+                                to={`/user`}
+                                state={{ userData: user, parent: 'showData' }}
+                            >
                                 <td>
                                     {user.firstName}
                                 </td>
@@ -77,17 +83,17 @@ const UsersList = () => {
                                 <td>{user.lastName}</td>
 
                                 <td>{user.userId}</td>
-                                </Link>
+                            </Link>
 
-                                <td className='edit-and-delete'>
-                                    <Link
-                                        className='icon'
-                                        to={`/user`}
-                                        state={{ userData: user, parent: 'editData' }}
-                                    ><MdModeEdit /></Link>
-                                    <button className='icon' onClick={() => deleteUser(user.id)}><RiDeleteBin5Line /></button></td>
+                            <td className='edit-and-delete'>
+                                <Link
+                                    className='icon'
+                                    to={`/user`}
+                                    state={{ userData: user, parent: 'editData' }}
+                                ><MdModeEdit /></Link>
+                                <button className='icon' onClick={() => deleteUser(user.id)}><RiDeleteBin5Line /></button></td>
 
-                            </tr>
+                        </tr>
                     ))}
                 </tbody></table>
 
